@@ -25,8 +25,7 @@ public class Hooks {
     }
 
     @After
-    public void afterEveryScenario(Scenario scenario) {
-
+    public void afterEveryScenario(Scenario scenario) throws Exception {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) new LoginStepDefination().driver).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
